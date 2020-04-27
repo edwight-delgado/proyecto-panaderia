@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>panaderia</title>
+	<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+	<style type="text/css">
+		*{
+			border: 0;
+			padding: 0;
+			margin: 0;
+			font-size: 15px;
+			box-sizing: border-box;
+
+		}
+		body{
+			/* overflow-y: hidden; */
+			font-family: "Open Sans";
+			line-height: 24px;
+			font-weight: 400;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		header{
+			margin-bottom: 5px
+		}
+		.btn{
+			border: 0;
+
+		}
+		.info-top{
+			width: 100%;
+			height: auto;
+			background-color: #343434;
+			padding: 10px 0;
+			display: inline-block;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+
+		}
+		.info-top .left,
+		.info-top .right{
+			padding: 3px;
+		}
+		.info-top span{
+			color: #fff;
+			font-size: .7em;
+			margin: 3px;
+			border-left: 1px solid;
+			padding-left: 4px;		
+		}
+		.info-top .box{
+			border: 2px solid #fff;
+			padding: 2px;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			margin: 0 6px;
+			display: inline-block;
+			text-align: center;
+			transition: all 0.45s ease-in-out;
+		}
+		.info-top .box:hover{
+			background-color: #fff;
+			color: #000;
+		}
+		nav {
+			width: 100%;
+		    height: 90px;
+		    background-color: #ccc;
+		    display: flex;
+		    justify-content: space-between;
+		    padding: 4px 0;
+		}
+		nav .logo{
+			padding-top: 10px; 
+		}
+		nav .logo img{
+			width: 80px;
+			height: 80px;
+		}
+		nav #menu{
+			display: flex;
+			flex-direction: column;
+			overflow: hidden; 
+			position: absolute;
+			top: 90px;
+			background-color: #fff;
+			width: 100%;
+			height: 100px;
+			z-index: 100;
+			/* z-index: 100;
+			height: 100%;
+			position: fixed;
+			*/
+
+		}
+		nav #menu li{
+			padding: 15px;
+			border: 1px solid #444;
+			cursor: pointer;
+			margin: 5px 10px;
+			transition: all 0.45s ease-in-out;
+		}
+		nav #menu li:hover{
+			background-color:rgba(253,184,34,0.9);
+		}
+		nav #menu li:hover a{
+			color:#fff; 
+		}
+		nav #menu li a{
+			font-size: 1.2em;
+			color: #444;
+		}
+		nav #menu .btn-nav{
+			width: 50px;
+			height: 50px;
+			margin-right: 20px;
+			position: absolute;
+			right: 0;
+			top: 20px;
+			display: block;
+			text-align: center;
+			padding-top: 5px;
+			border: 1px solid #684f40;
+			cursor: pointer;
+			transition: all 0.45s ease-in-out;
+		}
+		nav #menu .btn-nav:hover{
+			color:#fff; 
+			background-color:rgba(253,184,34,0.9);
+		}
+		nav #menu .btn-nav:hover > i{
+			color:#fff; 
+		}
+		nav #menu .btn-nav i{
+			font-size: 2em;
+			color: #684f40;
+		}
+		.contenedor{
+			width: 90%;
+			margin: auto;
+		}
+		.info{
+			border-top: 3px solid #000; 
+			padding-top: 30px;
+		}
+		.info h2{
+			font-size: 18px;
+			text-align: center;
+			text-transform: uppercase;
+			color: #684f40;
+			font-family: Montserrat;
+			font-weight: 700;
+		}
+		.info p{
+			font-size: 14px;
+			text-align: center;
+		}
+		#slider{
+			margin: 20px 0;
+			max-height: 300px;
+			overflow: hidden;
+			display: block;
+		}
+		#slider img{
+			width: 100%;
+		}
+		#products li,#services li,#contactus .formulario{
+			height: 475px;
+			width: 100%;
+			max-width: 360px;
+			background-color: #fff;
+			margin-top: 20px;
+			list-style: none;
+			border: 2px solid #684f40;
+			padding: 7px;
+			overflow: hidden;
+		}
+		#products ul,
+		#services ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		#products picture{
+			width: 95%;
+			height: 97%;
+			display: block;
+			margin: 5px auto;
+			background-color: #f8f8f8;
+		}
+		#products img{
+			width: 100%;
+			height: 100%;
+		}
+		#products .product-info{
+			width: 100%;
+			background-color:rgba(253,184,34,0.9);
+			position: relative;
+			text-align: center;
+			bottom: 50%;
+			height: 50%;
+			z-index: 2;
+			color: #fff;
+			padding: 0 10px 20px;
+
+		}
+		#products .product-info .product-icon{
+			position: relative;
+			top: -35px;
+		}
+		#products .product-info .icon{
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			padding-top: 8px;
+			border: 2px solid rgba(253,184,34,0.9);
+			margin: 10px;
+			border-radius: 25%;
+			background-color: #fff;
+			color: rgba(253,184,34,0.9);
+			transition: all 0.45s ease-in-out;
+		}
+		#products .product-info .icon:hover{
+			background-color: rgb(104, 79, 64);
+			color: #fff;
+			border-color: rgb(104, 79, 64);
+		}
+		#products .product-info i{
+			font-size: 1.7em;
+		}
+		#products .product-info h3,
+		#products .product-info .price{
+			font-size: 1.8em;
+			font-weight: bold;
+		}
+		#products .product-info p{
+			font-size: 1.1em;
+			padding: 15px 0;
+			font-weight: lighter;
+		}
+		#products .product-label{
+			width: 60px;
+			height: 70px;
+			position: absolute;
+			background-color: #ff4800;
+			display: block;
+			text-align: center;
+			clip-path: polygon(100% 0, 100% 100%, 50% 85%, 0 100%, 0 0);
+			color: #fff;
+			font-size: 1.2em;
+			padding-top: 15px;
+		}
+		#products .btn-product{
+			display: block;
+			text-align: center;
+			padding: 20px;
+			border: 2px solid #684f40;
+			font-size: 1.4em;
+			width: 360px;
+			margin: 40px auto;
+			transition: all 0.45s ease-in-out;
+		}
+		#products .btn-product:hover{
+			background-color: #684f40;
+			color: #fff;
+		}
+		#banner{
+			padding: 20px;
+			background-color: #fdb822;
+		}
+		#banner img{
+			width: 90px;
+			height: 110px;
+			display: block;
+			margin: auto;
+		}
+		#banner h4{
+			font-size: 15px;
+			text-transform: uppercase;
+			text-align: center;
+			line-height: 30px;
+		}
+		#banner p{
+			font-size: 16px;
+			line-height: 15px;
+			color: #333333;
+		}
+		#services li{
+			height: auto;
+			border: none;
+			padding:20px 0;
+		}
+		#services img{
+			width: 100%;
+			height: 100%;
+			border-radius: 25%; 
+			border: 3px solid #684f40;
+			transition: all 1.25s ease-in-out;
+		}
+		#services img:hover{
+			border: 3px solid rgba(253,184,34,0.9);
+		}
+		#services picture{
+			width: 190px;
+			height: 190px;
+			display: block;
+			margin: 0 auto;
+		}
+		#services picture:hover{
+			transform: scale(1.05);
+			transition: all 0.45s ease-in-out;
+		}
+		#services li h3{
+			color: #fdb822;
+			font-size: 1.2em;
+			text-transform: uppercase;
+			text-align: center;
+			padding: 20px 0;
+		}
+		#services li p{
+			text-align: center;
+			color: #696969;
+		}
+		#services li a{
+			text-align: center;
+			display: block;
+			width: 120px;
+			height: auto;
+			padding: 10px 2px;
+			margin: 10px auto;
+			border: 2px solid #684f40;
+			color: #684f40;
+			transition: all 0.45s ease-in-out;
+		}
+		#services li a:hover{
+			color: rgba(253,184,34,0.9);
+			border-color: rgba(253,184,34,0.9);
+		}
+		#contactus{
+			width: 100%;
+			height: auto;
+			background: beige;
+			background-image: url('img/vt');
+			background-repeat: no-repeat;
+			background-size: 100%;
+			background-position: center;
+			background-attachment: fixed;
+		}
+		#contactus .formulario{
+			padding: 30px;
+			display: block;
+			text-align: center;
+			background-color: #684f40;
+		}
+		#contactus .formulario h4{
+			font-size: 1.6em;
+			line-height: 2em;
+			
+		}
+		#contactus .formulario h4,
+		#contactus .formulario p{
+			color: #fff;
+		}
+		#contactus .formulario input,
+		#contactus .formulario textarea{
+			width: 100%;
+			height: 40px;
+			margin: 10px 0;
+		}
+		#contactus .formulario textarea{
+			height: 80px;
+		}
+		@media(min-width:800px){
+			#products li{
+				margin: 10px;
+			}
+		}
+	</style>
+</head>
+<body id="app">
+	<header>
+		<div class="info-top">
+			<div class="left">
+				<span>+1 0123 456 789</span>
+				<span>info@bakerytheme.com</span>
+			</div>
+			<div class="right">
+				<span class="box">
+					<i class="icon-codeopen"></i>
+				</span>
+				<span class="box">
+					<i class="icon-codeopen"></i>
+				</span>
+				<span class="box">
+					<i class="icon-codeopen"></i>
+				</span>
+					
+			</div>
+		</div>
+		<nav>
+			<ul id="menu">
+			<picture class="logo">
+				<img src="img/bakery-logo-dark.png">
+			</picture>
+				<span class="btn btn-nav" onclick="toggleMenu(true)">
+					<i class=" icon-menu"></i>
+				</span>
+				
+				<li>
+					<a href="#">inicio</a>
+				</li>
+				<li>
+					<a href="#">producto</a>
+				</li>
+				<li>
+					<a href="#">inicio</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section id="slider">
+			<img src="img/slide-2.jpg">
+	</section>
+	<section class="contenedor">
+		
+		<section id="products">
+			<div class="info">
+				<h2>Our latest bakery products</h2>
+				<p>Check some of our best products and feel the great passion for food</p>
+			</div>
+			<ul class="items">
+				<li>
+					<div class="product-label">sale</div>
+					<picture>
+						<img src="img/bread-1.jpg">
+					</picture>
+					<div class="product-info">
+						<div class="product-icon">
+							<span class="icon">
+								<i class="icon-codeopen"></i>
+							</span>
+							<span class="icon">
+								<i class="icon-codeopen"></i>
+							</span>
+						</div>
+						<h3>Maple Oat Muffin</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<span class="price"> $ 6.95</span>
+					</div>
+					
+				</li>
+				<li>
+					<picture>
+						<img src="img/cake-1.jpg">
+					</picture>
+					<div class="product-info">
+						<div class="product-icon">
+							<span class="icon">
+								<i>c</i>
+							</span>
+							<span class="icon">
+								<i>c</i>
+							</span>
+						</div>
+						<h3>Maple Oat Muffin</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<span class="price"> $ 6.95</span>
+					</div>
+					
+				</li>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+					</picture>
+					<div class="product-info">
+						<div class="product-icon">
+							<span class="icon">
+								<i>c</i>
+							</span>
+							<span class="icon">
+								<i>c</i>
+							</span>
+						</div>
+						<h3>Maple Oat Muffin</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<span class="price"> $ 6.95</span>
+					</div>
+					
+				</li>
+				
+			</ul>
+			<div class="btn-product">
+				ver más 
+			</div>
+		</section>
+		<section id="services">
+			<div class="info">
+				<h2>Main services we provide</h2>
+				<p>Our services are the best in town, we provide great quality baked products</p>
+			</div>
+			<ul>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+
+					</picture>
+						<div class="services-info">
+							<h3>Lots of Bread</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+							<a href="#">leer más</a>
+						</div>
+				</li>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+					</picture>
+					<div class="services-info">
+							<h3>Lots of Bread</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+							<a href="#">leer más</a>
+					</div>
+				</li>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+						
+					</picture>
+						<div class="services-info">
+							<h3>loft</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+						</div>
+				</li>
+			</ul>
+		</section>
+		<section id="banner">
+			<img src="img/testimonial-1.jpg">
+			<h4>William wallace</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</section>
+		<section id="staff">
+			<div class="info">
+				<h2>Main services we provide</h2>
+				<p>Our services are the best in town, we provide great quality baked products</p>
+			</div>
+			<ul>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+
+					</picture>
+						<div class="services-info">
+							<h3>Lots of Bread</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+							<a href="#">leer más</a>
+						</div>
+				</li>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+					</picture>
+					<div class="services-info">
+							<h3>Lots of Bread</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+							<a href="#">leer más</a>
+					</div>
+				</li>
+				<li>
+					<picture>
+						<img src="img/bread-3.jpg">
+						
+					</picture>
+						<div class="services-info">
+							<h3>loft</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut </p>
+						</div>
+				</li>
+			</ul>
+		</section>
+		<section id="contactus">
+			<div class="formulario">
+				<div class="form-info">
+					<h4>CONTACT US</h4>
+					<p>Meet the creative team that never sleeps. Say something to us we will answer to you.</p>
+				</div>
+				<form>
+					<input type="text" name="name" placeholder="Nombre">
+					<input type="text" name="phone" placeholder="Telefono">
+					<input type="text" name="email" placeholder="Correo">
+					<textarea placeholder="mensaje"></textarea>
+
+				</form>
+			</div>
+		</section>
+		<footer></footer>
+	</section>
+	<script type="text/javascript">
+		function toggleMenu(valor){
+			let menu = document.getElementById('menu');
+			body = document.getElementById('app');
+			if (valor) {
+				menu.style.overflow ="auto";
+				menu.style.height ="100%";
+				menu.style.position="fixed";
+				
+				body.style.overflow="hidden";
+			}
+			if (!valor) {
+				body.style.overflow="auto";
+				menu.style.position="absolute";
+				menu.style.height ="100px";
+				menu.style.overflow ="hidden";
+			}
+		}
+	</script>
+</body>
+</html>
